@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ravi | Personal Portfolio</title>
+<link rel="icon" type="image/png" href="ravilogo.png">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+
+:root{--o:#ff6a00;--o2:#ffa24a;--bg:#070707;--panel:#121212;--line:#2b2b2b;--text:#ececec;--mut:#9b9b9b}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+::selection{background:var(--o);color:#000}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.75;overflow-x:hidden;counter-reset:sec;
+background-image:radial-gradient(circle at 12% 8%,#ff6a0024 0,transparent 32%),radial-gradient(circle at 90% 60%,#ff6a001a 0,transparent 30%),linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px);
+background-size:auto,auto,46px 46px,46px 46px;background-attachment:fixed}
+h1,h2,h3{font-family:'Oswald',sans-serif;letter-spacing:.04em;text-transform:uppercase}
+a{color:var(--o2)}
+
+
+#boot{position:fixed;inset:0;z-index:999;background:#000;display:flex;align-items:center;justify-content:center;animation:bootOut .6s 3.9s forwards}
+.term{width:min(92%,520px);font-family:'JetBrains Mono',monospace;font-size:.92rem;color:var(--o)}
+.term p{white-space:nowrap;overflow:hidden;width:0;animation:type .45s steps(34) forwards}
+.term p span{color:#fff}
+.term p:nth-child(1){animation-delay:.2s}.term p:nth-child(2){animation-delay:.8s}.term p:nth-child(3){animation-delay:1.4s}
+.term p:nth-child(4){animation-delay:2s}.term p:nth-child(5){animation-delay:2.6s}
+.loadbar{height:4px;margin-top:22px;border-radius:9px;background:#2a1a0c;overflow:hidden}
+.loadbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--o),var(--o2));box-shadow:0 0 14px var(--o);animation:fill 3.4s ease-in-out forwards}
+.cursor{display:inline-block;width:9px;height:1em;background:var(--o);vertical-align:-2px;animation:blink .7s steps(1) infinite}
+@keyframes type{to{width:100%}}
+@keyframes fill{to{width:100%}}
+@keyframes blink{50%{opacity:0}}
+@keyframes bootOut{to{opacity:0;visibility:hidden}}
+
+
+.topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:10px 5%;background:#070707d9;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font:700 1.3rem 'Oswald',sans-serif;letter-spacing:.12em}
+.brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--o)}
+.brand b{color:var(--o)}
+.topbar nav{display:flex;gap:6px;flex-wrap:wrap}
+.topbar nav a{padding:6px 14px;border-radius:30px;color:var(--text);text-decoration:none;font-size:.9rem;font-weight:600;transition:.3s}
+.topbar nav a:hover{background:var(--o);color:#000;box-shadow:0 0 18px #ff6a0080}
+
+section{max-width:1080px;margin:auto;padding:70px 22px}
+section h2{font-size:2.1rem;color:#fff;margin-bottom:34px}
+section h2::before{counter-increment:sec;content:"0" counter(sec) " / ";color:var(--o)}
+section h2::after{content:"";display:block;width:90px;height:4px;margin-top:10px;background:linear-gradient(90deg,var(--o),transparent)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+.card{background:linear-gradient(160deg,#181818,#0d0d0d);border:1px solid var(--line);border-radius:16px;padding:28px;transition:.35s}
+.card:hover{transform:translateY(-6px);border-color:var(--o);box-shadow:0 18px 50px #ff6a0030}
+.card h3{color:var(--o);font-size:1.15rem;margin-bottom:12px}
+
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:50px;align-items:center;min-height:86vh;animation:rise 1s 4.2s both}
+.eyebrow{font-family:'JetBrains Mono',monospace;color:var(--o);font-size:.9rem}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);line-height:1.05;color:#fff;margin:8px 0}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--o),var(--o2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-size:1.2rem;color:var(--o2);font-weight:600;margin-bottom:12px}
+.hero p.lead{color:var(--mut);max-width:520px;margin-bottom:26px}
+.btn{display:inline-block;margin:0 10px 10px 0;padding:13px 30px;border-radius:40px;border:2px solid var(--o);background:linear-gradient(135deg,var(--o),#d94f00);color:#000;font:700 .95rem 'Inter',sans-serif;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:.3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px #ff6a0080}
+.btn.ghost{background:transparent;color:var(--o)}
+.btn.ghost:hover{background:var(--o);color:#000}
+
+.frame{position:relative;width:min(100%,360px);aspect-ratio:1/1;justify-self:center;border:2px solid var(--o);border-radius:6px;padding:12px;background:#0d0d0d;box-shadow:0 0 60px #ff6a0040;animation:float 5s ease-in-out infinite}
+.frame::before,.frame::after{content:"";position:absolute;width:46px;height:46px;border:5px solid var(--o2)}
+.frame::before{top:-14px;left:-14px;border-right:0;border-bottom:0}
+.frame::after{bottom:-14px;right:-14px;border-left:0;border-top:0}
+.frame img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05)}
+.frame figcaption{position:absolute;left:12px;right:12px;bottom:12px;padding:30px 14px 10px;background:linear-gradient(transparent,#000000f0);font:700 1rem 'Oswald',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--o2)}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-16px) rotate(1deg)}}
+
+.ticker{overflow:hidden;border-block:1px solid var(--line);background:#0c0c0c;padding:14px 0}
+.track{display:flex;width:max-content;animation:scroll 22s linear infinite}
+.track span{padding:0 34px;font:500 1.2rem 'Oswald',sans-serif;letter-spacing:.2em;color:var(--mut);white-space:nowrap}
+.track span:nth-child(even){color:var(--o)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:10px}
+.stat{text-align:center}
+.stat strong{display:block;font:700 2.4rem 'Oswald',sans-serif;color:var(--o)}
+.stat span{color:var(--mut);font-size:.9rem;text-transform:uppercase;letter-spacing:.12em}
+
+
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{background:var(--o);color:#000;font-family:'Oswald',sans-serif;letter-spacing:.1em;text-transform:uppercase}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line)}
+tbody tr:hover td{background:#ff6a0018;color:#fff}
+td:first-child{color:var(--o2);font-weight:600}
+ul,ol{padding-left:22px}li{margin:7px 0}
+li::marker{color:var(--o)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{padding:6px 18px;border:1px solid var(--o);border-radius:30px;color:var(--o2);font-size:.9rem;transition:.3s}
+.chips span:hover{background:var(--o);color:#000}
+.hl{color:var(--o2);font-weight:600;text-decoration:underline;text-decoration-color:var(--o)}
+iframe{width:100%;height:340px;border:2px solid var(--line);border-radius:16px;filter:grayscale(1) invert(.92) contrast(.9);transition:.4s}
+iframe:hover{filter:none;border-color:var(--o)}
+
+.contact{text-align:center}
+.contact p{margin-bottom:8px}
+footer{text-align:center;padding:28px 20px;border-top:1px solid var(--line);color:var(--mut);font-size:.85rem}
+footer b{color:var(--o)}
+
+@media(max-width:800px){.hero{grid-template-columns:1fr;min-height:auto;gap:40px}.topbar{justify-content:center}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+
+<div id="boot">
+  <div class="term">
+    <p>&gt; <span>RAVI.OS</span> v1.0 starting...</p>
+    <p>&gt; loading profile.......... [ OK ]</p>
+    <p>&gt; loading education........ [ OK ]</p>
+    <p>&gt; loading skills........... [ OK ]</p>
+    <p>&gt; welcome <span>Ravi</span> <i class="cursor"></i></p>
+    <div class="loadbar"><i></i></div>
+  </div>
+</div>
+
+<header class="topbar">
+  <a class="brand" href="#home"><img src="ravilogo.png" alt="Ravi logo"><span>RAVI<b>.</b></span></a>
+  <nav>
+    <a href="#home">Home</a><a href="#about">About</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#location">Location</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <section id="home" class="hero">
+    <div class="intro">
+      <p class="eyebrow">// personal portfolio</p>
+      <h1>Hi, I'm <em>Ravi</em></h1>
+      <p class="role">First-Year CSE Student &middot; IIIT Raichur</p>
+      <p class="lead">I am a <b>first-year CSE student</b> who loves <u>programming</u>, <i>web development</i> and building chat bots. Welcome to my corner of the internet.</p>
+      <a class="btn" href="#about">Explore</a>
+      <a class="btn ghost" href="#contact">Contact Me</a>
+    </div>
+    <figure class="frame">
+      <img src="ravilogo.png" alt="Portrait of Ravi">
+      <figcaption>Ravi &middot; First-Year CSE</figcaption>
+    </figure>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="track">
+      <span>HTML</span><span>CSS</span><span>PROGRAMMING</span><span>WEB DESIGN</span><span>CHAT BOTS</span><span>CREATIVITY</span>
+      <span>HTML</span><span>CSS</span><span>PROGRAMMING</span><span>WEB DESIGN</span><span>CHAT BOTS</span><span>CREATIVITY</span>
+    </div>
+  </div>
+
+ 
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="two">
+      <article class="card">
+        <h3>Profile Sheet</h3>
+        <div class="tablewrap">
+        <table>
+          <tbody>
+            <tr><td>Name</td><td>Ravi [your surname]</td></tr>
+            <tr><td>Studying</td><td>B.Tech CSE, 1st Year</td></tr>
+            <tr><td>College</td><td>IIIT Raichur</td></tr>
+            <tr><td>Ambition</td><td>Software Engineer</td></tr>
+            <tr><td>Address</td><td>[your city / area]</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </article>
+      <div>
+        <article class="card" style="margin-bottom:26px">
+          <h3>Hobbies</h3>
+          <ul><li>[hobby one]</li><li>[hobby two]</li><li>[hobby three]</li></ul>
+        </article>
+        <article class="card">
+          <h3>Interests</h3>
+          <ul><li>Programming</li><li>Web development</li><li>Building chat bots</li></ul>
+        </article>
+      </div>
+    </div>
+    <div class="stats card" style="margin-top:26px">
+      <div class="stat"><strong>1st</strong><span>Year</span></div>
+      <div class="stat"><strong>CSE</strong><span>Branch</span></div>
+      <div class="stat"><strong>IIITR</strong><span>College</span></div>
+    </div>
+  </section>
+
+  
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card tablewrap">
+      <table>
+        <thead><tr><th>Level</th><th>Institution</th><th>Details</th><th>Year</th></tr></thead>
+        <tbody>
+          <tr><td>School</td><td>[school name]</td><td>[marks]</td><td>[year]</td></tr>
+          <tr><td>Intermediate</td><td>[junior college]</td><td>MPC</td><td>[years]</td></tr>
+          <tr><td>B.Tech</td><td>IIIT Raichur</td><td>CSE &middot; First Year</td><td>2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <section id="skills">
+    <h2>Skills &amp; Goals</h2>
+    <div class="two">
+      <article class="card">
+        <h3>Toolbox</h3>
+        <div class="chips"><span>HTML</span><span>CSS</span><span>Programming</span><span>Writing</span></div>
+      </article>
+      <article class="card">
+        <h3>My Learning Path</h3>
+        <ol>
+          <li>Master HTML &amp; CSS</li>
+          <li>Build strong programming basics</li>
+          <li>Create <span class="hl">chat bots</span></li>
+          <li>Become a software engineer</li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+
+  <section id="location">
+    <h2>Find Me</h2>
+    <iframe title="IIIT Raichur map" src="https://maps.google.com/maps?q=IIIT+Raichur&amp;output=embed" loading="lazy"></iframe>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Let's build something great together.</p>
+      <p><a href="mailto:yourname@example.com">yourname@example.com</a></p>
+      <a class="btn" href="mailto:yourname@example.com">Send Email</a>
+      <a class="btn ghost" href="https://www.iiitr.ac.in" target="_blank" rel="noopener">My College</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2026 <b>Ravi</b> &middot; First-Year CSE, IIIT Raichur &middot; Built with HTML &amp; CSS</p>
+</footer>
+
+</body>
+</html>
